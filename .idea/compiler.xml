@@ -9,8 +9,5 @@
         <module name="MusicLibraryAPI" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="Maven" target="21" />
-    </bytecodeTargetLevel>
   </component>
 </project>

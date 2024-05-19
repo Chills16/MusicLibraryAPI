@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f7df5707-51e3-4664-a754-c28578f6df17" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maven/src/main/java/dataAccessObject/InMemorySongDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maven/src/main/java/dataAccessObject/SongDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maven/src/main/java/main/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maven/src/main/java/model/Playlist.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maven/src/main/java/model/Song.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maven/src/main/java/service/MusicLibraryService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maven/src/main/java/spotify/SpotifyAuth.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maven/src/main/java/spotify/SpotifySearch.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maven/src/main/resources/config.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MusicLibraryAPI.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/howToRun.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dataAccessObject/InMemorySongDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dataAccessObject/SongDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/java/main/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/Playlist.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/Song.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/resources/config.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/service/MusicLibraryService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/spotify/SpotifyAuth$SpotifyTokenResponse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/spotify/SpotifyAuth.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/spotify/SpotifySearch.class" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 5
+}]]></component>
+  <component name="ProjectId" id="2ghhq8OC2uX18oC18La3kdw1PyX" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/UTVAS/Desktop/MusicLibraryAPI",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f7df5707-51e3-4664-a754-c28578f6df17" name="Changes" comment="" />
+      <created>1716155904885</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1716155904885</updated>
+      <workItem from="1716155905869" duration="33000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
