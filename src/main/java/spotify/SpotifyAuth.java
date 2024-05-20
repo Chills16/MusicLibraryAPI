@@ -5,9 +5,12 @@ import com.google.gson.Gson;
 import java.io.IOException;
 import java.util.Properties;
 
+/**
+ * Handles authentication with the Spotify API by fetching an access token using client credentials.
+ */
 public class SpotifyAuth {
-    private static String clientId;
-    private static String clientSecret;
+    private static final String clientId;
+    private static final String clientSecret;
 
     static {
         Properties props = new Properties();
@@ -24,6 +27,11 @@ public class SpotifyAuth {
             throw new RuntimeException("Failed to load configuration properties", e);
         }
     }
+    /**
+     * Retrieves the access token from Spotify's authorization server.
+     * @return The access token as a String.
+     * @throws IOException If there is an issue with the network or if the server response is unexpected.
+     */
     public static String getAccessToken() throws IOException {
         OkHttpClient client = new OkHttpClient();
         String credentials = Credentials.basic(clientId, clientSecret);
@@ -43,16 +51,21 @@ public class SpotifyAuth {
             Gson gson = new Gson();
             assert response.body() != null;
             SpotifyTokenResponse tokenResponse = gson.fromJson(response.body().string(), SpotifyTokenResponse.class);
-            return tokenResponse.access_token;
+            // Parse the JSON response to extract the access token
+            return tokenResponse.access_token;  // Return the access token obtained from Spotify
         }
     }
 
+    /**
+     * A helper class to deserialize JSON response from Spotify's API for authentication.
+     */
     @SuppressWarnings("unused")
     private static class SpotifyTokenResponse {
-        String access_token;
-        String token_type;
-        int expires_in;
-        String scope;
+        String access_token;  // Field to hold the access token
+        String token_type;    // Token type, typically "Bearer"
+        int expires_in;       // Duration in seconds for which the token is valid
+        String scope;         // Scopes of access granted by the token
     }
 }
+
 

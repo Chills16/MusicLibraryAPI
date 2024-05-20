@@ -17,19 +17,30 @@ import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Provides functionality to search for songs on Spotify using the Spotify Web API.
+ */
 public class SpotifySearch {
+    /**
+     * Searches Spotify for tracks based on a given query.
+     * @param accessToken The access token for authentication with Spotify API.
+     * @param query The search query for the song.
+     * @return A map of song details with artist and song name as key, and Spotify URL as value.
+     * @throws IOException If there is a problem with the network or server.
+     * @throws URISyntaxException If the URI built for API request is incorrect.
+     */
     public static Map<String, String> searchSong(String accessToken, String query) throws IOException, URISyntaxException {
         Map<String, String> trackDetails = new HashMap<>();
 
         try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
             URI uri = new URIBuilder("https://api.spotify.com/v1/search")
-                    .addParameter("q", query)
-                    .addParameter("type", "track")
-                    .addParameter("limit", "10")
+                    .addParameter("q", query) // Query parameter for the song search.
+                    .addParameter("type", "track") // Specifies the type of search (tracks).
+                    .addParameter("limit", "10") // Limits the number of results to 10.
                     .build();
 
             HttpGet request = new HttpGet(uri);
-            request.setHeader("Authorization", "Bearer " + accessToken);
+            request.setHeader("Authorization", "Bearer " + accessToken); // Sets the Authorization header with the access token.
 
             try (CloseableHttpResponse response = httpClient.execute(request)) {
                 if (response.getStatusLine().getStatusCode() != 200) {
