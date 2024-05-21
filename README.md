@@ -18,7 +18,7 @@ Welcome to the MusicLibraryAPI, an interactive command-line application that all
 ## Prerequisites
 
 Before you begin, ensure you have the following installed on your system:
-- Java JDK 11 or newer
+- Java JDK 21 or newer
 - Apache Maven 3.6.0 or newer
 
 You can check your Java version by running:
@@ -33,20 +33,20 @@ mvn -version
 
 ## Installation
 
-Cloning the Repository
+### Cloning the Repository
 To get started with the MusicLibraryAPI, clone this repository to your local machine using the following command:
 ```bash
 git clone https://github.com/Chills16/MusicLibraryAPI.git
 cd MusicLibraryAPI
 ```
 
-Building the Project
+### Building the Project
 Navigate to the project directory where the pom.xml file is located and run the following Maven command to build the project and download all necessary dependencies:
 ```bash
 mvn clean install
 ```
 
-Running the Application
+### Running the Application
 After building the project, you can run the application directly using Maven by executing:
 ```bash
 mvn exec:java -Dexec.mainClass="main.Main"
@@ -54,8 +54,8 @@ mvn exec:java -Dexec.mainClass="main.Main"
 Make sure to replace "main.Main" with the correct path to your main class if it differs.
 
 
-Packaging the Application as a JAR
-If you prefer to run the application as a JAR file, ensure your pom.xml includes the necessary configuration for the Maven JAR Plugin as shown in the project documentation. Then, execute:
+### Packaging the Application as a JAR
+If you prefer to run the application as a JAR file, execute:
 ```bash
 mvn clean package
 ```
@@ -67,7 +67,7 @@ java -jar target/MusicLibraryAPI-1.0-SNAPSHOT.jar
 Replace MusicLibraryAPI-1.0-SNAPSHOT.jar with your generated JAR file name.
 
 ## Configuration
-Before running the application, make sure to configure the Spotify API credentials. Place your clientId and clientSecret in the config.properties file located under src/main/resources. This file should not be pushed to public repositories to keep your credentials secure.
+Before running the application, make sure to configure the Spotify API credentials. Place your clientId and clientSecret in the config.properties file located under src/main/resources. This file should not be pushed to public repositories to keep your credentials secure, although, there are my personal credentials present for a small period, for academic purposes.
 
 ## Contribution
 Contributions to the MusicLibraryAPI are welcome! Please fork the repository, make your changes, and submit a pull request. For major changes, please open an issue first to discuss what you would like to change.
@@ -78,4 +78,4 @@ This project is licensed under the MIT License - see the LICENSE.md file for det
 ## Support
 If you encounter any problems or have any queries regarding the MusicLibraryAPI, please open an issue through the GitHub issue tracker, or contact me directly at david.buko16@gmail.com.
 
-Thank you for using MusicLibraryAPI!
+#### Thank you for using MusicLibraryAPI!

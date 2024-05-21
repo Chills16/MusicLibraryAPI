@@ -1,3 +1,9 @@
+<!-- pom.xml
+This file is the Project Object Model (POM) file for Maven. It serves as the central configuration piece for projects handled via Maven.
+It contains project dependencies, build configurations, plugins, and other essential metadata needed to build the project effectively.
+This file dictates how the project is built, along with its dependencies. -->
+
+
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -15,17 +21,23 @@
     <!-- Compiler warnings are present because the project uses the latest Java version,
     and some dependencies may not yet be fully compatible with it. -->
     <dependencies>
-
+        <!-- HttpClient is used for making HTTP requests to external services, such as the Spotify Web API. -->
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
             <version>4.5.13</version>
         </dependency>
+
+        <!-- OkHttp is a modern HTTP client which supports both synchronous blocking calls and async calls with callbacks.
+             It is used here for efficient HTTP requests, especially useful for handling requests to Spotify's OAuth services. -->
         <dependency>
             <groupId>com.squareup.okhttp3</groupId>
             <artifactId>okhttp</artifactId>
             <version>4.9.0</version>
         </dependency>
+
+        <!-- Gson is a Java library that can be used to convert Java Objects into their JSON representation.
+             It can also be used to convert a JSON string to an equivalent Java object. Gson is particularly useful when parsing the JSON responses from Spotify API calls. -->
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
@@ -33,4 +45,25 @@
         </dependency>
 
     </dependencies>
+
+    <build>
+        <plugins>
+            <!-- The Maven JAR Plugin is configured here to package the application along with its dependencies into an executable JAR file.
+                 It includes specifications for the Main class to ensure the jar is runnable. -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>lib/</classpathPrefix>
+                            <mainClass>main.Main</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

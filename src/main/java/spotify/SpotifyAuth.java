@@ -1,3 +1,9 @@
+// SpotifyAuth.java
+// This Java file contains the SpotifyAuth class responsible for handling authentication with the Spotify API.
+// It uses client credentials to obtain an access token that allows the application to make requests to the Spotify Web API.
+// The class manages the setup of these credentials and the actual process of fetching the token using HTTP requests.
+
+
 package spotify;
 
 import okhttp3.*;

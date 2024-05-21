@@ -1,3 +1,9 @@
+// SpotifySearch.java
+// This Java file contains the SpotifySearch class, which provides functionality to search for songs on Spotify using their API.
+// It constructs HTTP requests to query Spotify's track database based on user input, parses the JSON response, and returns a map of song details.
+// This class is crucial for integrating Spotify's extensive music database with the application, allowing users to search and retrieve music information.
+
+
 package spotify;
 
 import com.google.gson.JsonArray;
