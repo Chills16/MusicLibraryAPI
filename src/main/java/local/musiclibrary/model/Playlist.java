@@ -1,14 +1,16 @@
-package model;
+package local.musiclibrary.model;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 // Class representing a playlist which can contain multiple songs.
+@SuppressWarnings("all")
 public class Playlist {
     // The name of the playlist.
     private final String name;
     // List to store the songs in the playlist.
-    private final List<Song> songs;
+    private List<Song> songs;
 
     // Constructor to create a new playlist with a given name.
     public Playlist(String name) {
@@ -16,14 +18,27 @@ public class Playlist {
         this.songs = new ArrayList<>();
     }
 
+    public void setSongs(List<Song> songs) {
+        this.songs = songs;
+    }
+
     // Add a song to the playlist.
     public void addSong(Song song) {
         songs.add(song);
     }
 
-    // Remove a song from the playlist, return true if the song was found and removed.
-    public boolean removeSong(Song song) {
-        return songs.remove(song);
+    // Remove a song from the playlist.
+    public boolean removeSong(Song songToRemove) {
+        Iterator<Song> it = songs.iterator();
+        while (it.hasNext()) {
+            Song song = it.next();
+            if (song.getTitle().equalsIgnoreCase(songToRemove.getTitle()) &&
+                    song.getArtist().equalsIgnoreCase(songToRemove.getArtist())) {
+                it.remove();
+                return true;
+            }
+        }
+        return false;
     }
 
     // Get all songs in the playlist.

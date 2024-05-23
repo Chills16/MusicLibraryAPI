@@ -1,13 +1,14 @@
-package dataAccessObject;
+package local.musiclibrary.dao;
 
-import model.Song;
+import local.musiclibrary.model.Song;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
 import java.util.ArrayList;
 
 // Implementation of SongDAO to manage songs in memory using a HashMap.
-public class InMemorySongDAO implements SongDAO {
+public class InMemorySongDAO implements local.musiclibrary.dao.SongDAO {
     // Map to store songs, using the song's title in lowercase as the key.
     private final Map<String, Song> songMap;
 

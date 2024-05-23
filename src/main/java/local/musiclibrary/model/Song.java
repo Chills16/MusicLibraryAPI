@@ -1,4 +1,6 @@
-package model;
+package local.musiclibrary.model;
+
+import java.util.Objects;
 
 /**
  * This class represents a song in the music library. It holds information about the song such as its title,
@@ -75,6 +77,20 @@ public class Song {
     // Setter method for the Spotify URL of the song. Allows updating the URL where the song can be played.
     public void setSpotifyUrl(String spotifyUrl) {
         this.spotifyUrl = spotifyUrl;
+    }
+
+    // Used for removing stored songs, being loaded after running the program again
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Song song = (Song) o;
+        return title.equals(song.title) && artist.equals(song.artist);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(title, artist);
     }
 
     /**

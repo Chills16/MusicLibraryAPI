@@ -1,10 +1,11 @@
-package service;
+package local.musiclibrary.service;
 
-import dataAccessObject.SongDAO;
-import model.Playlist;
-import model.Song;
-import spotify.SpotifyAuth;
-import spotify.SpotifySearch;
+import local.musiclibrary.model.Playlist;
+import local.musiclibrary.model.Song;
+import local.musiclibrary.model.StorageManager;
+import local.musiclibrary.dao.SongDAO;
+import local.musiclibrary.spotify.SpotifyAuth;
+import local.musiclibrary.spotify.SpotifySearch;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -12,9 +13,10 @@ import java.util.stream.Collectors;
  * This class manages the music library, including adding songs, creating playlists,
  * and interacting with the Spotify API to fetch songs.
  */
+@SuppressWarnings("all")
 public class MusicLibraryService {
     private final SongDAO songDao; // Data access object to interact with song data.
-    private final List<Playlist> playlists; // List to hold all playlists.
+    private List<Playlist> playlists; // List to hold all playlists.
 
     /**
      * Constructor for MusicLibraryService.
@@ -62,6 +64,9 @@ public class MusicLibraryService {
                 Song song = new Song(selectedName, selectedArtist, optionalGenre.isEmpty() ? "Unknown Genre" : optionalGenre, selectedUrl);
                 songDao.addSong(song); // Adds the new song to the database.
                 System.out.println("Song added: " + song);
+
+                // Save data after adding the song
+                StorageManager.saveData(playlists);
             } else {
                 System.out.println("No results found on Spotify.");
             }
@@ -86,9 +91,17 @@ public class MusicLibraryService {
      */
     public boolean removeSong(String title) {
         Song song = songDao.findSongByTitle(title);
-        if (song != null && songDao.removeSong(song)) { // If the song is found and successfully removed.
-            playlists.forEach(playlist -> playlist.removeSong(song)); // Remove the song from all playlists.
-            return true;
+        if (song != null) {
+            boolean removed = songDao.removeSong(song);
+            if (removed) {
+                playlists.forEach(playlist -> playlist.removeSong(song)); // Remove from all playlists
+
+                // Save data after removing the song
+                StorageManager.saveData(playlists);
+                return true;
+            } else {
+                System.out.println("Song not found.");
+            }
         }
         return false;
     }
@@ -127,6 +140,7 @@ public class MusicLibraryService {
 
         if (song != null && playlist.isPresent()) {
             playlist.get().addSong(song);
+            StorageManager.saveData(playlists);  // Save after adding song to playlist
             return true;
         }
         return false;
@@ -142,10 +156,23 @@ public class MusicLibraryService {
         Optional<Playlist> playlist = playlists.stream()
                 .filter(p -> p.getName().equalsIgnoreCase(playlistName))
                 .findFirst();
-        Song song = findSongByStandardizedName(songStandardizedName);
 
-        if (song != null && playlist.isPresent()) {
-            return playlist.get().removeSong(song);
+        if (playlist.isPresent()) {
+            Song songToRemove = songDao.findSongByTitle(songStandardizedName.split(" - ")[1]); // Standardized name is "Artist - Title"
+            if (songToRemove != null) {
+                boolean removed = playlist.get().getSongs().removeIf(song -> song.equals(songToRemove));
+                if (removed) {
+                    StorageManager.saveData(playlists); // Persist changes
+                    System.out.println("Song removed from playlist.");
+                    return true;
+                } else {
+                    System.out.println("Song not found in playlist for removal.");
+                }
+            } else {
+                System.out.println("Song not found in database.");
+            }
+        } else {
+            System.out.println("Playlist not found: " + playlistName);
         }
         return false;
     }
@@ -195,6 +222,20 @@ public class MusicLibraryService {
         return playlists.stream()
                 .filter(playlist -> playlist.getName().toLowerCase().contains(query.toLowerCase()))
                 .collect(Collectors.toList());
+    }
+
+    /**
+     * Set the playlists to the loaded playlists from storage.
+     */
+    public void setPlaylists(List<Playlist> playlists) {
+        this.playlists = playlists;
+    }
+
+    /**
+     * Fetches all the playlists created within the program.
+     */
+    public List<Playlist> getPlaylists() {
+        return playlists;
     }
 }
 

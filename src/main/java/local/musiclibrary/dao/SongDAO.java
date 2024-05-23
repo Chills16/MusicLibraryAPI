@@ -1,6 +1,6 @@
-package dataAccessObject;
+package local.musiclibrary.dao;
 
-import model.Song;
+import local.musiclibrary.model.Song;
 import java.util.List;
 
 // Interface defining the basic operations for managing songs in a data repository.

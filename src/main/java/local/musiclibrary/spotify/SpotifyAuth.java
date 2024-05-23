@@ -4,7 +4,7 @@
 // The class manages the setup of these credentials and the actual process of fetching the token using HTTP requests.
 
 
-package spotify;
+package local.musiclibrary.spotify;
 
 import okhttp3.*;
 import com.google.gson.Gson;

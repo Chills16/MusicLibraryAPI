@@ -3,7 +3,6 @@ This file is the Project Object Model (POM) file for Maven. It serves as the cen
 It contains project dependencies, build configurations, plugins, and other essential metadata needed to build the project effectively.
 This file dictates how the project is built, along with its dependencies. -->
 
-
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">

@@ -1,10 +1,11 @@
-package main;
+package local.musiclibrary.main;
 
 // Import necessary classes from other packages to use them in this file.
-import dataAccessObject.InMemorySongDAO;
-import model.Playlist;
-import model.Song;
-import service.MusicLibraryService;
+import local.musiclibrary.dao.InMemorySongDAO;
+import local.musiclibrary.model.Playlist;
+import local.musiclibrary.model.Song;
+import local.musiclibrary.service.MusicLibraryService;
+import local.musiclibrary.model.StorageManager;
 
 import java.util.List;
 import java.util.Scanner;
@@ -20,19 +21,28 @@ public class Main {
         InMemorySongDAO songDao = new InMemorySongDAO();
         // Create an instance of MusicLibraryService to handle business logic related to songs and playlists.
         MusicLibraryService service = new MusicLibraryService(songDao);
+        // Attempt to load previous session data
+        List<Playlist> loadedPlaylists = StorageManager.loadData(songDao);
+
+        if (loadedPlaylists != null && !loadedPlaylists.isEmpty()) {
+            service.setPlaylists(loadedPlaylists);
+            System.out.println("Loaded playlists: " + loadedPlaylists.size());
+        } else {
+            System.out.println("No playlists loaded.");
+        }
 
         // Infinite loop to keep the program running until the user decides to exit.
         while (true) {
             // Print options available to the user in the console.
             System.out.println("\nWelcome to the Music Library API");
-            System.out.println("1. Add Song");
+            System.out.println("1. Add a Song");
             System.out.println("2. List Songs");
-            System.out.println("3. Remove Song");
-            System.out.println("4. Create Playlist");
-            System.out.println("5. Add Song to Playlist");
-            System.out.println("6. Remove Song from Playlist");
-            System.out.println("7. View Playlist");
-            System.out.println("8. Delete Playlist");
+            System.out.println("3. Remove a Song");
+            System.out.println("4. Create a Playlist");
+            System.out.println("5. Add a Song to a Playlist");
+            System.out.println("6. Remove a Song from a Playlist");
+            System.out.println("7. View a Playlist");
+            System.out.println("8. Delete a Playlist");
             System.out.println("9. Search Songs");
             System.out.println("10. Search Playlists");
             System.out.println("11. Exit");
@@ -142,6 +152,7 @@ public class Main {
                 case 11:
                     // Exit the program.
                     System.out.println("Exiting...");
+                    StorageManager.saveData(service.getPlaylists()); // Save current state of the storage
                     System.exit(0);
                     break;
 
@@ -149,6 +160,7 @@ public class Main {
                     // Handle invalid options.
                     System.out.println("Invalid option. Please try again.");
             }
+        StorageManager.saveData(service.getPlaylists()); // Save current state of the storage
         }
     }
 

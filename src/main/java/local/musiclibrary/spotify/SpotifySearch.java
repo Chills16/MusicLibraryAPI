@@ -4,7 +4,7 @@
 // This class is crucial for integrating Spotify's extensive music database with the application, allowing users to search and retrieve music information.
 
 
-package spotify;
+package local.musiclibrary.spotify;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
