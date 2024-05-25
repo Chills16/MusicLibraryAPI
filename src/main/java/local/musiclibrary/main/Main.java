@@ -135,7 +135,7 @@ public class Main {
      */
     private static void addSong(MusicLibraryService service) {
         String title = promptForInput("Enter the song title: ");
-        String artist = promptForInput("Enter te artist: ");
+        String artist = promptForInput("Enter the artist: ");
         String genre = promptForInput("Enter the genre (optional, press ENTER to skip): ");
         service.addSong(title, artist, genre, scanner);
         System.out.println("Song added successfully!");
