@@ -17,6 +17,8 @@ Welcome to the MusicLibraryAPI, an interactive command-line application that all
 
 ## Prerequisites
 
+**This app was made in Intellij IDEA, but also runs on Eclipse (free java IDE)**
+
 Before you begin, ensure you have the following installed on your system:
 - Java JDK 21 or newer
 - Apache Maven 3.6.0 or newer
@@ -64,7 +66,7 @@ This command will generate a JAR file in the target directory. Run the JAR file 
 ```bash
 java -jar target/MusicLibraryAPI-1.0-SNAPSHOT.jar
 ```
-Replace MusicLibraryAPI-1.0-SNAPSHOT.jar with your generated JAR file name.
+Replace MusicLibraryAPI-1.0-SNAPSHOT.jar with your generated JAR file name (if different).
 
 ## Configuration
 Before running the application, make sure to configure the Spotify API credentials. Place your clientId and clientSecret in the config.properties file located under src/main/resources. This file should not be pushed to public repositories to keep your credentials secure, although, there are my personal credentials present for a small period, for academic purposes.
